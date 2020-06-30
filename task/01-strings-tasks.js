@@ -69,8 +69,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    var temp=value.substring(7);
-    return temp.substring(0, temp.length-1);
+    var temp = value.substring(7);
+    return temp.substring(0, temp.length - 1);
 }
 
 
@@ -146,7 +146,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-    return str.slice(1, str.length-1);
+    return str.slice(1, str.length - 1);
 }
 
 
@@ -202,16 +202,16 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    var top='┌'.concat('─'.repeat(width-2)).concat('┐');
-    var between='│'.concat(' '.repeat(width-2)).concat('│');
-    var bottom="└".concat('─'.repeat(width-2)).concat('┘');
+    var top = '┌'.concat('─'.repeat(width - 2)).concat('┐');
+    var between = '│'.concat(' '.repeat(width - 2)).concat('│');
+    var bottom = "└".concat('─'.repeat(width - 2)).concat('┘');
 
-    var rect=top.concat('\n');
-    for (let index = 0; index <height-2; index++) {
-       rect=rect.concat(between);
-       rect=rect.concat('\n');
+    var rect = top.concat('\n');
+    for (let index = 0; index < height - 2; index++) {
+        rect = rect.concat(between);
+        rect = rect.concat('\n');
     }
-    rect=rect.concat(bottom).concat('\n');
+    rect = rect.concat(bottom).concat('\n');
 
     return rect;
 }
@@ -233,8 +233,8 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    return (str+'').replace(/[a-zA-Z]/gi,function(s){
-        return String.fromCharCode(s.charCodeAt(0)+(s.toLowerCase()<'n'?13:-13))
+    return (str + '').replace(/[a-zA-Z]/gi, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13))
     })
 }
 
@@ -281,10 +281,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    var cardDeck = [ 'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-                    'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-                    'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-                    'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠' ];
+    var cardDeck = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+        'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+        'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+        'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
     return cardDeck.indexOf(value);
 }
 
