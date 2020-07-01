@@ -69,8 +69,7 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    var temp = value.substring(7);
-    return temp.substring(0, temp.length - 1);
+    return value.substring(7, value.length - 1);
 }
 
 
@@ -202,16 +201,11 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    var top = '┌'.concat('─'.repeat(width - 2)).concat('┐');
-    var between = '│'.concat(' '.repeat(width - 2)).concat('│');
-    var bottom = "└".concat('─'.repeat(width - 2)).concat('┘');
+    let top = '┌'.concat('─'.repeat(width - 2)).concat('┐').concat('\n');
+    let between = '│'.concat(' '.repeat(width - 2)).concat('│').concat('\n');
+    let bottom = "└".concat('─'.repeat(width - 2)).concat('┘').concat('\n');
 
-    var rect = top.concat('\n');
-    for (let index = 0; index < height - 2; index++) {
-        rect = rect.concat(between);
-        rect = rect.concat('\n');
-    }
-    rect = rect.concat(bottom).concat('\n');
+    let rect = top.concat(between.repeat(height - 2)).concat(bottom);
 
     return rect;
 }
@@ -233,9 +227,7 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    return (str + '').replace(/[a-zA-Z]/gi, function (s) {
-        return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13))
-    })
+    return (str + '').replace(/[a-zA-Z]/gi, (s) => String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13)));
 }
 
 /**
@@ -252,7 +244,7 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    return (typeof value === 'string' || value instanceof String) ? true : false;
+    return (typeof value === 'string' || value instanceof String);
 }
 
 
@@ -281,7 +273,7 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    var cardDeck = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    let cardDeck = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
         'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
         'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
         'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
